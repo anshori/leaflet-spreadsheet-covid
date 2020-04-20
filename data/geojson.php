@@ -66,7 +66,7 @@
 	$combined_output = json_encode($polygonAdmin, JSON_NUMERIC_CHECK); 
 
 	header("Access-Control-Allow-Origin: *");
-  header('Cache-Control: no-cache, must-revalidate');
+  // header('Cache-Control: no-cache, must-revalidate');
 	header('Content-Type: application/json');
 	echo $combined_output;
 ?>

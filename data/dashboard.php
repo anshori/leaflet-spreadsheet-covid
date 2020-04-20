@@ -19,6 +19,13 @@
 		$email = $row[$i++];
 		$telepon = $row[$i++];
 		$alamat = $row[$i++];
+		$judul_total_positif = $row[$i++];
+		$judul_total_odp = $row[$i++];
+		$judul_total_pdp = $row[$i++];
+		$judul_total_dirawat = $row[$i++];
+		$judul_total_sembuh = $row[$i++];
+		$judul_total_meninggal = $row[$i++];
+		$judul_tabel = $row[$i++];
 	}
 	fclose($dashboardHandle); // close the CSV file handler
 ?>

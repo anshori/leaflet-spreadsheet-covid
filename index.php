@@ -8,14 +8,19 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="author" content="unsorry">
 
-    <?php include 'data/dashboard.php'; ?>
-    <?php include 'data/total.php'; ?>
+    <?php
+    	include 'data/dashboard.php';
+    	include 'data/total.php';
+    ?>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css">
+
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
@@ -100,7 +105,7 @@
 		    	<div class="col-sm card border-light bg-dark m-2">
 		    		<div class="row p-2">
 		          <div class="col">
-		            <strong>TOTAL POSITIF</strong>
+		            <strong><?php echo $judul_total_positif; ?></strong>
 		          </div>
 		        </div>
 		        <div class="row pb-2">
@@ -112,7 +117,7 @@
 		    	<div class="col-sm card border-light bg-dark m-2">
 		    		<div class="row p-2">
 		          <div class="col">
-		            <strong>TOTAL ODP</strong>
+		            <strong><?php echo $judul_total_odp; ?></strong>
 		          </div>
 		        </div>
 		        <div class="row pb-2">
@@ -124,7 +129,7 @@
 		    	<div class="col-sm card border-light bg-dark m-2">
 		    		<div class="row p-2">
 		          <div class="col">
-		            <strong>TOTAL PDP</strong>
+		            <strong><?php echo $judul_total_pdp; ?></strong>
 		          </div>
 		        </div>
 		        <div class="row pb-2">
@@ -138,7 +143,7 @@
 		    	<div class="col-sm card border-light text-warning bg-dark m-2">
 		    		<div class="row p-2">
 		          <div class="col">
-		            <strong>DIRAWAT</strong>
+		            <strong><?php echo $judul_total_dirawat; ?></strong>
 		          </div>
 		        </div>
 		        <div class="row pb-2">
@@ -150,7 +155,7 @@
 		    	<div class="col-sm card border-light text-success bg-dark m-2">
 		    		<div class="row p-2">
 		          <div class="col">
-		            <strong>SEMBUH</strong>
+		            <strong><?php echo $judul_total_sembuh; ?></strong>
 		          </div>
 		        </div>
 		        <div class="row pb-2">
@@ -162,7 +167,7 @@
 		    	<div class="col-sm card border-light text-danger bg-dark m-2">
 		    		<div class="row p-2">
 		          <div class="col">
-		            <strong>MENINGGAL</strong>
+		            <strong><?php echo $judul_total_meninggal; ?></strong>
 		          </div>
 		        </div>
 		        <div class="row pb-2">
@@ -175,7 +180,74 @@
 	    </div>
 
     	<!-- Table Content -->
-    	<div id="table"></div>
+    	<div class="card border-primary shadow m-2 p-3">
+    		<div class="alert alert-dark text-center"><h4><strong><?php echo $judul_tabel;?></strong></h4></div>
+    		<div class="table-responsive">
+          <table id="dataTable" class="table table-striped table-bordered">
+            <thead>
+              <tr class="alert-primary text-dark text-center">
+                <th>No</th>
+                <th>Kecamatan</th>
+                <th class="">Positif</th>
+                <th class="">ODP</th>
+                <th class="">PDP</th>
+                <th class="">Dirawat</th>
+                <th class="">Sembuh</th>
+                <th class="">Meninggal</th>
+              </tr>
+            </thead>
+            <!-- <tfoot>
+              <tr class="alert-primary text-dark text-center">
+                <th>No</th>
+                <th>Provinsi</th>
+                <th class="alert-warning"><i class="far fa-sad-tear"></i> Positif</th>
+                <th class="alert-success"><i class="far fa-smile"></i> Sembuh</th>
+                <th class="alert-danger"><i class="far fa-frown"></i> Meninggal</th>
+              </tr>
+            </tfoot> -->
+            <tbody>
+              <?php
+              	$googleSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9DVHhCwoQUBg4xgbQvueBRJY9G-65lHIKm7dtftQ6pYPOlR-bf_l-nhiLMor_xcHiLX6oMTpNAgdo/pub?gid=17708037&single=true&output=csv";
+              	$rowCount = 0;
+                $handle = fopen($googleSpreadsheetUrl, "r");
+						    // while CSV has data, read up to 10000 rows
+						    while (($row = fgetcsv($handle, 0, ",")) !== FALSE)
+						    {
+						      $rowCount++;
+						      if ($rowCount == 1) { continue; } // skip the first/header row of the CSV
+
+						      $i = 0;
+						      $no = $row[$i++];
+						      $kecamatan = $row[$i++];
+						      $positif = $row[$i++];
+						      $odp = $row[$i++];
+						      $pdp = $row[$i++];
+						      $dirawat = $row[$i++];
+						      $sembuh = $row[$i++];
+						      $meninggal = $row[$i++];
+
+						      echo '<tr>'.
+                  '<td class="text-center">'. $no .'</td>'.
+                  '<td>'. $kecamatan .'</td>'.
+                  '<td class="text-right">'. $positif .'</td>'.
+                  '<td class="text-right">'. $odp .'</td>'.
+                  '<td class="text-right">'. $pdp .'</td>'.
+                  '<td class="text-right">'. $dirawat .'</td>'.
+                  '<td class="text-right">'. $sembuh .'</td>'.
+                  '<td class="text-right">'. $meninggal .'</td>'.
+                  '</tr>';
+						      
+						    } // end while, loop through CSV data
+
+						    fclose($handle); // close the CSV file handler
+              ?>
+            </tbody>
+          </table>
+        </div>
+    	</div>
+    	<footer class="bg-dark text-center text-white">
+    		<small><?php echo $attribution;?></small>
+    	</footer>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -185,6 +257,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <?php include 'assets/js/app.php';?>
   </body>
 </html>
