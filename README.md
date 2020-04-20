@@ -4,7 +4,7 @@ Mini project dalam rangka membantu kabupaten/kota agar dapat menyajikan data kas
 
 ---
 
-> Demo: [https://unsorry.net/git/leaflet-spreadsheetcovid](https://unsorry.net/git/leaflet-spreadsheetcovid)
+> Demo: [https://unsorry.net/git/leaflet-spreadsheet-covid](https://unsorry.net/git/leaflet-spreadsheet-covid)
 
 > Spreadsheet data: [https://docs.google.com/spreadsheets/d/1fj6hCNHlwX7TlBmqPK6icFv4jhWNA_tK0ADI6L1NawY/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1fj6hCNHlwX7TlBmqPK6icFv4jhWNA_tK0ADI6L1NawY/edit?usp=sharing)
 
