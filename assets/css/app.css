@@ -1,0 +1,30 @@
+body, html, .container-fluid {
+	padding-top: 18px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+#map {
+  height: 500px;
+  padding: 0px;
+}
+.styleLabel{
+  background: rgba(255, 255, 255, 0);
+  border: 0;
+  border-radius: 0px;
+  box-shadow: 0 0px 0px;
+  font-size: 10pt;
+  font-weight: bold;
+  color: black;
+}
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.info h5 {
+  margin: 0 0 5px;
+  color: #000;
+}
