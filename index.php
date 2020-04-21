@@ -35,17 +35,23 @@
 	<link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
-
+	<!-- Theme style -->
+	<link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
+	<!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+	<link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
 	<!-- Morris chart -->
 	<link rel="stylesheet" href="assets/bower_components/morris.js/morris.css">
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="assets/bower_components/jvectormap/jquery-jvectormap.css">
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+	<!-- Daterange picker -->
+	<link rel="stylesheet" href="assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+	<!-- bootstrap wysihtml5 - text editor -->
+	<link rel="stylesheet" href="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-
-
-	<title><?= $judul_tab; ?></title>
+	<title><?php echo $judul_tab; ?></title>
 </head>
 
 <body>
@@ -55,13 +61,13 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header alert-info">
-					<h5 class="modal-title" id="exampleModalCenterTitle"><b><?= $instansi;?></b></h5>
+					<h5 class="modal-title" id="exampleModalCenterTitle"><b><?php echo $instansi;?></b></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-			<?php
+					<?php
             	echo '<table class="table table-borderless">'.
             	'<tr><td><i class="fas fa-home"></i></td><td>'. $alamat .'</td></tr>'.
             	'<tr><td><i class="fas fa-envelope"></i></td><td>'. $email .'</td></tr>'.
@@ -102,7 +108,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container-xl">
 				<a class="navbar-brand" href="#">
-					<b><?= $navbar_icon; ?> <?= $judul_navbar; ?></b>
+					<b><?php echo $navbar_icon; ?> <?php echo $judul_navbar; ?></b>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
 					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,9 +141,9 @@
 				<div class="col-sm m-2">
 					<div class="small-box bg-red">
 						<div class="inner">
-							<h3><?= number_format($totalpositif); ?></h3>
+							<h3><?php echo number_format($totalpositif); ?></h3>
 
-							<p><?= $judul_total_positif; ?></p>
+							<p><?php echo $judul_total_positif; ?></p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-android-person-add"></i>
@@ -149,9 +155,9 @@
 				<div class="col-sm  m-2">
 					<div class="small-box bg-blue">
 						<div class="inner">
-							<h3><?= number_format($totalpositif); ?></h3>
+							<h3><?php echo number_format($totalpositif); ?></h3>
 
-							<p><?= $judul_total_odp; ?></p>
+							<p><?php echo $judul_total_odp; ?></p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-android-people"></i>
@@ -163,9 +169,9 @@
 				<div class="col-sm  m-2">
 					<div class="small-box bg-blue">
 						<div class="inner">
-							<h3><?= number_format($totalpdp); ?></h3>
+							<h3><?php echo number_format($totalpdp); ?></h3>
 
-							<p><?= $judul_total_pdp; ?></p>
+							<p><?php echo $judul_total_pdp; ?></p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-android-people"></i>
@@ -180,9 +186,9 @@
 				<div class="col-sm  m-2">
 					<div class="small-box bg-yellow">
 						<div class="inner">
-							<h3><?= number_format($totaldirawat); ?></h3>
+							<h3><?php echo number_format($totaldirawat); ?></h3>
 
-							<p><?= $judul_total_dirawat; ?></p>
+							<p><?php echo $judul_total_dirawat; ?></p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-android-person-add"></i>
@@ -194,9 +200,9 @@
 				<div class="col-sm  m-2">
 					<div class="small-box bg-green">
 						<div class="inner">
-							<h3><?= number_format($totalsembuh); ?></h3>
+							<h3><?php echo number_format($totalsembuh); ?></h3>
 
-							<p><?= $judul_total_sembuh; ?></p>
+							<p><?php echo $judul_total_sembuh; ?></p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-android-contacts"></i>
@@ -208,9 +214,9 @@
 				<div class="col-sm  m-2">
 					<div class="small-box bg-secondary">
 						<div class="inner">
-							<h3><?= number_format($totalmeninggal); ?></h3>
+							<h3><?php echo number_format($totalmeninggal); ?></h3>
 
-							<p><?= $judul_total_meninggal; ?></p>
+							<p><?php echo $judul_total_meninggal; ?></p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-android-remove-circle"></i>
@@ -230,7 +236,7 @@
 	<div class="container-xl">
 	<div class="card border-primary shadow m-2 p-3">
 		<div class="alert alert-dark text-center">
-			<h4><strong><?= $judul_tabel;?></strong></h4>
+			<h4><strong><?php echo $judul_tabel;?></strong></h4>
 		</div>
 		<div class="table-responsive">
 			<table id="dataTable" class="table table-striped table-bordered">
@@ -289,10 +295,10 @@
 	<footer class="bg-dark text-white">
 		<div class="row mx-auto py-1">
 			<div class="col text-left px-3">
-				<small>Update data: <?= $tanggalupdatedata;?></small>
+				<small>Update data: <?php echo $tanggalupdatedata;?></small>
 			</div>
 			<div class="col text-right px-3">
-				<small><?= $attribution;?></small>
+				<small><?php echo $attribution;?></small>
 			</div>
 		</div>
 
