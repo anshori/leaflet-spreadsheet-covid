@@ -77,13 +77,18 @@ var adminpolygon = L.geoJson(null, {
         map.closePopup(); //Menutup popup
       },
       click: function (e) { //Fungsi ketika obyek di-klik
-        var content = "Kec. " + feature.properties.KECAMATAN + "<br>" +
-          "Positif: " + feature.properties.POSITIF + "<br>" +
-          "ODP: " + feature.properties.ODP + "<br>" +
-          "PDP: " + feature.properties.PDP + "<br>" +
-          "Dirawat: " + feature.properties.DIRAWAT + "<br>" +
-          "Sembuh: " + feature.properties.SEMBUH + "<br>" +
-          "Meninggal: " + feature.properties.MENINGGAL;
+        var content = "<div class='card'>" +
+          "<div class='card-header alert-primary text-center p-2'><strong>" + feature.properties.KECAMATAN + "</strong></div>" +
+          "<div class='card-body p-0'>" +
+            "<table class='table table-responsive-sm m-0'>" +
+              "<tr><th class='p-2'>Kasus Positif</th><th class='p-2'>" + feature.properties.POSITIF + "</th></tr>" +
+              "<tr><th class='p-2'>Jumlah ODP</th><th class='p-2'>" + feature.properties.ODP + "</th></tr>" +
+              "<tr><th class='p-2'>Jumlah PDP</th><th class='p-2'>" + feature.properties.PDP + "</th></tr>" +
+              "<tr><th class='p-2'>Dirawat</th><th class='p-2'>" + feature.properties.DIRAWAT + "</th></tr>" +
+              "<tr><th class='p-2'>Sembuh</th><th class='p-2'>" + feature.properties.SEMBUH + "</th></tr>" +
+              "<tr><th class='p-2'>Meninggal</th><th class='p-2'>" + feature.properties.MENINGGAL + "</th></tr>" +
+            "</table>" +
+          "</div>";
         adminpolygon.bindPopup(content); //Popup
       }
     });

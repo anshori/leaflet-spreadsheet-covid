@@ -196,22 +196,12 @@
                 <th class="">Meninggal</th>
               </tr>
             </thead>
-            <!-- <tfoot>
-              <tr class="alert-primary text-dark text-center">
-                <th>No</th>
-                <th>Provinsi</th>
-                <th class="alert-warning"><i class="far fa-sad-tear"></i> Positif</th>
-                <th class="alert-success"><i class="far fa-smile"></i> Sembuh</th>
-                <th class="alert-danger"><i class="far fa-frown"></i> Meninggal</th>
-              </tr>
-            </tfoot> -->
             <tbody>
               <?php
-              	$googleSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9DVHhCwoQUBg4xgbQvueBRJY9G-65lHIKm7dtftQ6pYPOlR-bf_l-nhiLMor_xcHiLX6oMTpNAgdo/pub?gid=17708037&single=true&output=csv";
               	$rowCount = 0;
-                $handle = fopen($googleSpreadsheetUrl, "r");
-						    // while CSV has data, read up to 10000 rows
-						    while (($row = fgetcsv($handle, 0, ",")) !== FALSE)
+                $dataHandle = fopen($dataSpreadsheetUrl, "r");
+						    // while CSV has data
+						    while (($row = fgetcsv($dataHandle, 0, ",")) !== FALSE)
 						    {
 						      $rowCount++;
 						      if ($rowCount == 1) { continue; } // skip the first/header row of the CSV
@@ -239,14 +229,22 @@
 						      
 						    } // end while, loop through CSV data
 
-						    fclose($handle); // close the CSV file handler
+						    fclose($dataHandle); // close the CSV file handler
               ?>
             </tbody>
           </table>
         </div>
     	</div>
-    	<footer class="bg-dark text-center text-white">
-    		<small><?php echo $attribution;?></small>
+    	<footer class="bg-dark text-white">
+    		<div class="row mx-auto py-1">
+    			<div class="col text-left px-3">
+    				<small>Update data: <?php echo $tanggalupdatedata;?></small>
+    			</div>
+    			<div class="col text-right px-3">
+    				<small><?php echo $attribution;?></small>
+    			</div>
+    		</div>
+    		
     	</footer>
     </div>
 

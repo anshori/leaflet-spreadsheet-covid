@@ -1,5 +1,5 @@
 <?php
-	$dashboardSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9DVHhCwoQUBg4xgbQvueBRJY9G-65lHIKm7dtftQ6pYPOlR-bf_l-nhiLMor_xcHiLX6oMTpNAgdo/pub?gid=0&single=true&output=csv";
+	include 'spreadsheetconfig.php';
 
 	$rowCount = 0;
 	$dashboardHandle = fopen($dashboardSpreadsheetUrl, "r");

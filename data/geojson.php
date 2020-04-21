@@ -1,5 +1,6 @@
 <?php
-	$googleSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9DVHhCwoQUBg4xgbQvueBRJY9G-65lHIKm7dtftQ6pYPOlR-bf_l-nhiLMor_xcHiLX6oMTpNAgdo/pub?gid=17708037&single=true&output=csv";
+	include 'spreadsheetconfig.php';
+
   $rowCount = 0;
   $features = array();
   $error = FALSE;
@@ -13,10 +14,10 @@
   } // end if, set socket timeout
 
   // if the opening the CSV file handler does not fail
-  if ( !$error && (($handle = fopen($googleSpreadsheetUrl, "r")) !== FALSE) )
+  if ( !$error && (($dataHandle = fopen($dataSpreadsheetUrl, "r")) !== FALSE) )
   {
     // while CSV has data, read up to 10000 rows
-    while (($csvRow = fgetcsv($handle, 10000, ",")) !== FALSE)
+    while (($csvRow = fgetcsv($dataHandle, 10000, ",")) !== FALSE)
     {
       $rowCount++;
       if ($rowCount == 1) { continue; } // skip the first/header row of the CSV
@@ -35,7 +36,7 @@
       );
     } // end while, loop through CSV data
 
-    fclose($handle); // close the CSV file handler
+    fclose($dataHandle); // close the CSV file handler
     
   }  // end if , read file handler opened
 
