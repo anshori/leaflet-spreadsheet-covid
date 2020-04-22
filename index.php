@@ -130,7 +130,7 @@
 				<div class="col-sm m-2">
 					<div class="small-box bg-blue">
 						<div class="inner">
-							<h3><?php echo number_format($totalpositif); ?></h3>
+							<h3><?php echo number_format($totalodp); ?></h3>
 							<p><?php echo $judul_total_odp; ?></p>
 						</div>
 						<div class="icon">
