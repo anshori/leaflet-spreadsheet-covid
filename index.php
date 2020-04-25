@@ -110,8 +110,7 @@
 		<!-- End of Topbar -->
 
 		<!-- Map Content -->
-		<div id="map" class="card border-primary shadow m-2"></div>
-
+		<div id="map" class="card border-primary shadow" style="margin-top:24px;" ></div>
 		<!-- Total Data Content -->
 		<div class="card border-primary shadow text-white bg-dark m-2 p-4">
 			<div class="row">
